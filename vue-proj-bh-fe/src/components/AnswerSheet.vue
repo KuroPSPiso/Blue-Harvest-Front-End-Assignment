@@ -53,9 +53,12 @@ export default {
     setInterval(function(){
       //fetch
       
-      //restructure data for vuechart
-      this.query = QuestionStore.data.query
-      this.answerList = QuestionStore.data.answerList
+      //TOD: remove when data is fetched from the web
+      if(this.pollId === QuestionStore.data.pollId)
+      {
+          this.query = QuestionStore.data.query
+          this.answerList = QuestionStore.data.answerList
+      }
     }.bind(this), 1000)
   }
 }
