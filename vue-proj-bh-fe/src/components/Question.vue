@@ -5,7 +5,7 @@
                 <input 
                     class="question"
                     type="text"
-                    @input="updateQuery($event)"
+                    v-on:input="updateQuery($event)"
                     v-bind:value="query"
                     placeholder="Enter your question here..."
                     maxlength="80"
@@ -81,16 +81,16 @@ export default {
   methods:{
     //generateKey: a unique key for the owner of a question to return to and edit later. 
     generateKey: function(){
-        //create key
+        //create key in dataset
     },
     getAnswers: function(){
         //get answers from dataset
     },
     getAnswerSize: function(){
         if(this.answerList === undefined)
-            return this.minSize
+            return 0
         else if(this.answerList === null)
-            return this.minSize
+            return 0
         else
             return this.answerList.length
     },
@@ -118,24 +118,21 @@ export default {
             this.addAnswer()
         }
     },
+    updateQuery: function(event){
+        QuestionStore.methods.setQuery(event.target.value)
+        this.query = QuestionStore.data.query;
+    },
     reset: function(){
-        if(this.editorCode === QuestionStore.data.editorCode)
+        
+        let sizeOfArray = this.answerList.length;
+        for(var arrayIndex = 0; arrayIndex < sizeOfArray; arrayIndex++)
         {
-            this.query = ""
+            this.removeAnswer(0)
         }
-        //TODO:remove when using live data
 
         //if there are no answers or lack of answers or it is a new doc fill minimum required answers.
         while(this.answerList.length < this.minSize){
             this.addAnswer()
-        }
-    },
-    updateQuery(e){
-        this.query = e.target.value;
-        //TODO:remove when using live data
-        if(this.editorCode === QuestionStore.data.editorCode)
-        {
-            QuestionStore.data.editorCode = this.query;
         }
     }
   },

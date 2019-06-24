@@ -49,6 +49,14 @@ export default {
     }
     //fetch
 
+    //set update sequence
+    setInterval(function(){
+      //fetch
+      
+      //restructure data for vuechart
+      this.query = QuestionStore.data.query
+      this.answerList = QuestionStore.data.answerList
+    }.bind(this), 1000)
   }
 }
 </script>
