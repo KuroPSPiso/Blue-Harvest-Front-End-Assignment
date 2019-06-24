@@ -1,3 +1,3 @@
 module.exports ={
-    publicPath: '/Blue-Harvest-Front-End-Assignment/'
+    publicPath: '/KuroPSPiso/Blue-Harvest-Front-End-Assignment/'
 }
