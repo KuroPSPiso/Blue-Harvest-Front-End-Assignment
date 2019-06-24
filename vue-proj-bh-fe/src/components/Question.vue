@@ -123,7 +123,8 @@ export default {
         this.query = QuestionStore.data.query;
     },
     reset: function(){
-        
+        QuestionStore.methods.setQuery("")
+        this.query = QuestionStore.data.query;
         let sizeOfArray = this.answerList.length;
         for(var arrayIndex = 0; arrayIndex < sizeOfArray; arrayIndex++)
         {
