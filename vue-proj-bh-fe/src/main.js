@@ -11,6 +11,7 @@ Vue.use(Vuex)
 Vue.component('apex-chart', VueApexCharts)
 
 const router = new VueRouter({
+  base: '/Blue-Harvest-Front-End-Assignment/',
   routes: [
     { path: '/:pollId/:editorCode', component: App },
     { path: '/:pollId', component: App }
