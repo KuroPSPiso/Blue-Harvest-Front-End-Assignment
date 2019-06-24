@@ -1,23 +1,16 @@
 <template>
     <div ref="resultsInstance" class="results-component">
-      <vue-p5 
-        @setup="setup" 
-        @draw="draw"
-        @windowResized="windowResized"
-        ref="p5Instance">
-      </vue-p5>
+      <apex-chart type="bar" :options="options" :series="series"></apex-chart>
     </div>
 </template>
 
 <script>
-import QuestionStore from '../store/QuestionStore';
-import VueP5 from 'vue-p5';
+import QuestionStore from '../store/QuestionStore'
+import { timeout } from 'q';
+import { setTimeout, setInterval } from 'timers';
 
 export default {
   name: 'Results',
-  components: {
-    "vue-p5": VueP5
-  },
   props: {
     pollId: String
   },
@@ -25,32 +18,46 @@ export default {
       return {
           query: "",
           answerList: [],
-          selectedAnswerIndex: 0
+          selectedAnswerIndex: 0,
+          options: {
+            chart: {
+              id: 'poll-result'
+            },
+            xaxis: {
+              type: 'category',
+              categories: []
+            }
+          },
+          series: [{
+            data: []
+          }],
+          y: 0
       }
   },
   methods: {
-    setup(sketch) {
-      sketch.text('Hello p5!', 20, 20)
-    },
-    draw(sketch) {
-    },
-    windowResized(sketch) {
-      sketch.resizeCanvas(windowWidth, windowHeight);
-    }
-  },
-  render(h){
-    return h(VueP5, {on: this})
   },
   mounted: function(){
     //TODO: remove when data is fetched from the web
     if(this.pollId === QuestionStore.data.pollId)
     {
-        this.query = QuestionStore.data.query
         this.answerList = QuestionStore.data.answerList
     }
-    //fetch
 
-    
+    //set update sequence
+    setInterval(function(){
+      //fetch
+      
+      //restructure data for vuechart
+      let categories = []
+      let data = []
+      for(let answerIndex = 0; answerIndex < this.answerList.length; answerIndex++)
+      {
+        categories.push(this.answerList[answerIndex].index);
+        data.push(this.answerList[answerIndex].votes);
+      }
+      this.options.xaxis.categories = categories;
+      this.series[0].data = data;
+    }.bind(this), 1000)
   }
 }
 </script>
