@@ -2,7 +2,7 @@
 ## Assignment
 ### General description
 The application is a single page application which is devided in three sections. On the first section, the user can create a poll with up to 10 options. In the central one, the user can vote by selecting one of the options and pressing the 'vote' button. On the right, the chart will update based on the questions created and the votes that each question got.
-###Use cases
+### Use cases
 * AS the owner, I want to change my poll question.
 * AS the owner, I want to add, edit or remove the option of my poll.
 * AS the owner, I want to reset the whole form, including answers.
