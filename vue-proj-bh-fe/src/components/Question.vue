@@ -119,10 +119,12 @@ export default {
         }
     },
     updateQuery: function(event){
+        //TODO: remove when data is fetched from the web
         QuestionStore.methods.setQuery(event.target.value)
         this.query = QuestionStore.data.query;
     },
     reset: function(){
+        //TODO: remove when data is fetched from the web
         QuestionStore.methods.setQuery("")
         this.query = QuestionStore.data.query;
         let sizeOfArray = this.answerList.length;
