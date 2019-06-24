@@ -11,7 +11,6 @@ Vue.use(Vuex)
 Vue.component('apex-chart', VueApexCharts)
 
 const router = new VueRouter({
-  base: 'https://dazzling-bose-855e3f.netlify.com',
   routes: [
     { path: '/:pollId/:editorCode', component: App },
     { path: '/:pollId', component: App },
@@ -19,8 +18,7 @@ const router = new VueRouter({
     { path: '/index.html/:pollId/:editorCode', component: App },
     { path: '/index.html/:pollId', component: App },
     { path: '/index.html', component: App }
-  ],
-  mode: 'history'
+  ]
 })
 
 Vue.config.productionTip = false
