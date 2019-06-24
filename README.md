@@ -24,18 +24,26 @@ npm run serve
 home: here you can create a new poll (you WON'T see any changes happening on the _answer-selection tab_ and on the _results tab_, and the _question tab_ is empty)
 ```
 http://127.0.0.1:8080/
+or
+https://dazzling-bose-855e3f.netlify.com/#/
 ```
 reponse code: here you can respond to a specif code (you WILL see any changes happening on the _answer-selection tab_ and on the _results tab_, and the _question tab_ is EMPTY)
 ```
 http://127.0.0.1:8080/debug
+or
+https://dazzling-bose-855e3f.netlify.com/#/debug
 ```
 moderation code: here you can respond to a specif code (you WON'T see any changes happening on the _answer-selection tab_ and on the _results tab_, and the _question tab_ is FILLED)
 ```
 http://127.0.0.1:8080/0/blueharvest
+or
+https://dazzling-bose-855e3f.netlify.com/#/0/blueharvest
 ```
 reponse+moderation code: here you can respond to a specif code (you WILL see any changes happening on the _answer-selection tab_ and on the _results tab_, and the _question tab_ is FILLED)
 ```
 http://127.0.0.1:8080/debug/blueharvest
+or
+https://dazzling-bose-855e3f.netlify.com/#/debug/blueharvest
 ```
 
 ## Building
