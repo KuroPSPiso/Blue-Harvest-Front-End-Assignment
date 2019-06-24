@@ -29,7 +29,7 @@ reponse code: here you can respond to a specif code (you WILL see any changes ha
 ```
 http://127.0.0.1:8080/debug
 ```
-moderation code: here you can respond to a specif code (you WILL see any changes happening on the _answer-selection tab_ and WON'T on the _results tab_, and the _question tab_ is FILLED)
+moderation code: here you can respond to a specif code (you WON'T see any changes happening on the _answer-selection tab_ and on the _results tab_, and the _question tab_ is FILLED)
 ```
 http://127.0.0.1:8080/0/blueharvest
 ```
