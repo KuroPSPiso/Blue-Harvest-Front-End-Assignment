@@ -1,15 +1,20 @@
+import AnswerClass from "../classes/answer";
+
 const QuestionStore = {
     data: {
-        question: "",
-        answers: []
+        editorCode: "blueharvest",
+        query: "Will the the second answer be computed?",
+        answerList: [
+            new AnswerClass(1, 'Yes')
+        ]
     },
     methods: {
-        setQuestion(question){
-            QuestionStore.question = question;
+        setQuery(query){
+            QuestionStore.query = query;
         },
-        setAnswer(answer)
+        setAnswerList(answerList)
         {
-            QuestionStore.answer = answer;
+            QuestionStore.answerList = answerList;
         }
     }
 }

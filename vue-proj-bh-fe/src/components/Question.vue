@@ -47,6 +47,7 @@
 
 <script>
 import AnswerClass from '../classes/answer'
+import QuestionStore from '../store/QuestionStore' //TODO: remove when using imported data
 
 export default {
   name: 'Question',
@@ -83,11 +84,11 @@ export default {
         this.answerList.splice(index, 1)
         for(let updateIndex = index; updateIndex < this.answerList.length; updateIndex++)
         {
-            this.answerList[updateIndex].index = updateIndex + 1; //obj[0] = 1, obj[1] = 2, etc.
+            this.answerList[updateIndex].index = updateIndex + 1 //obj[0] = 1, obj[1] = 2, etc.
         }
         while(this.answerList.length < this.minSize)
         {
-            this.addAnswer();
+            this.addAnswer()
         }
     },
     reset: function(){
@@ -117,9 +118,17 @@ export default {
       }
   },
   mounted: function(){
-    //fetch else
+    //TODO: remove when data is fetched from the web
+    if(this.editorCode === QuestionStore.data.editorCode)
+    {
+        this.query = QuestionStore.data.query
+        this.answerList = QuestionStore.data.answerList
+    }
+    //fetch
+
+    //if there are no answers or lack of answers or it is a new doc fill minimum required answers.
     while(this.answerList.length < this.minSize){
-        this.addAnswer();
+        this.addAnswer()
     }
   }
 }
