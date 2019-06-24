@@ -17,6 +17,6 @@ export default {
 
 <style>
 .default-component{
-    
+    display: none;
 }
 </style>
