@@ -52,11 +52,11 @@ export default {
       let data = []
       for(let answerIndex = 0; answerIndex < this.answerList.length; answerIndex++)
       {
-        categories.push(this.answerList[answerIndex].index);
-        data.push(this.answerList[answerIndex].votes);
+        categories.push(this.answerList[answerIndex].index)
+        data.push(this.answerList[answerIndex].votes)
       }
-      this.options.xaxis.categories = categories;
-      this.series[0].data = data;
+      this.options.xaxis.categories = categories
+      this.series[0].data = data
     }.bind(this), 1000)
   }
 }
