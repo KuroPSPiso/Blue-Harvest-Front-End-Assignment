@@ -1,4 +1,46 @@
 # Blue-Harvest-Front-End-Assignment
+This project contians a Vue.JS project that you can download and is ready for local testing only. There is no back-end available but where ever you need to implement the code to do so a `//TODO:` comment has been added at most if not all locations.
+
+## Downloading the project
+To start the project please clone the project with with your command-line/terminal of choice:
+```git clone https://github.com/KuroPSPiso/Blue-Harvest-Front-End-Assignment.git```
+
+## Running the project
+To run the project:
+* go to the following directory from the current root:
+```shell
+cd ./Blue-Harvest-Front-End-Assignment/vue-proj-bh-fe
+```
+* install the packages:
+```shell
+npm install
+```
+* locally host the project: (if the project cannot be started it is likely that port 8080 is in use by your own project or Skype, please close this service first, alternatively you can test the next step)
+```shell
+npm run serve
+```
+
+## Running the site
+home: here you can create a new poll (you WON'T see any changes happening on the _answer-selection tab_ and on the _results tab_, and the _question tab_ is empty)
+```http://127.0.0.1:8080/```
+reponse code: here you can respond to a specif code (you WILL see any changes happening on the _answer-selection tab_ and on the _results tab_, and the _question tab_ is EMPTY)
+```http://127.0.0.1:8080/debug```
+moderation code: here you can respond to a specif code (you WILL see any changes happening on the _answer-selection tab_ and WON'T on the _results tab_, and the _question tab_ is FILLED)
+```http://127.0.0.1:8080/0/blueharvest```
+reponse+moderation code: here you can respond to a specif code (you WILL see any changes happening on the _answer-selection tab_ and on the _results tab_, and the _question tab_ is FILLED)
+```http://127.0.0.1:8080/debug/blueharvest```
+
+## Building
+* building the a distro, the project will be available in under `./Blue-Harvest-Front-End-Assignment/vue-proj-bh-fe/dist`, this folder can for example be uploaded to gitlab/github pages, an AWS server under `/var/www/html`, AWS s3 bucket, or your a host.
+```shell
+npm run build
+```
+* testing dist:
+- windows `start ./dist/index.html`
+- macos `open ./dist/index.html`
+- linux `xdg-open ./dist/index.html`
+
+
 ## Assignment
 ### General description
 The application is a single page application which is devided in three sections. On the first section, the user can create a poll with up to 10 options. In the central one, the user can vote by selecting one of the options and pressing the 'vote' button. On the right, the chart will update based on the questions created and the votes that each question got.
