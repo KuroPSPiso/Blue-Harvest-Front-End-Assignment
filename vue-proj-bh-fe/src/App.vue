@@ -2,7 +2,7 @@
   <div id="app">
     <DefaultComponent />
     <div class="poll-grid">
-      <Question class="cell cell-left" />
+      <Question class="cell cell-left" :editorCode="$route.params.editorCode"/>
       <AnswerSheet class="cell cell-center"/>
     </div>
   </div>
@@ -22,11 +22,13 @@ export default {
   }, 
   data: function(){
     return{
-      pollId: ""
+      pollId: "",
+      editorCode: ""
     }
   },
   mounted(){
-      this.pollId = this.$route.params.id;
+      this.pollId = this.$route.params.id
+      this.editorCode = this.$route.params.editorCode
   }
 }
 </script>

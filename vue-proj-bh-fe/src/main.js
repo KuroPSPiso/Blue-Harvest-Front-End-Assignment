@@ -6,8 +6,9 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({
   routes: [
-    { path: '/:id/:editCode', component: App },
-  ]
+    { path: '/:id/:editorCode', component: App }
+  ],
+  mode: 'history'
 })
 
 Vue.config.productionTip = false

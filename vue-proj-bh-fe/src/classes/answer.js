@@ -1,4 +1,4 @@
-export default class Answer{
+export default class AnswerClass{
     constructor(index, value)
     {
         this.index = index;
