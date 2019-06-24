@@ -7,7 +7,8 @@ const QuestionStore = {
         pollId: "debug",
         query: "Will the the second answer be computed?",
         answerList: [
-            new AnswerClass(1, 'Yes')
+            new AnswerClass(1, 'Yes').addVote().addVote().addVote(),
+            new AnswerClass(2, 'No').addVote()
         ]
     },
     methods: {

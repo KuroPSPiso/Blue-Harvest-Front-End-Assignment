@@ -1,20 +1,21 @@
 <template>
     <div class="answersheet-component">
-        <div 
-          v-for="answer in answerList"
-          v-bind:key="answer.index">
-            <input
-            type="radio"
-            v-bind:value="answer.index - 1"
-            v-model="selectedAnswerIndex"
-            />
-            <label>{{answer.value}}</label>
-        </div>
-        <input
-          type="button"
-          value="Vote"
-          v-on:click="vote()"
-          />
+      <h2>{{query}}</h2>
+      <div 
+        v-for="answer in answerList"
+        v-bind:key="answer.index">
+          <label class="option"><input
+          type="radio"
+          v-bind:value="answer.index - 1"
+          v-model="selectedAnswerIndex"
+          />{{answer.index}}. {{answer.value}}</label>
+      </div>
+      <input
+        class="button button-blue vote"
+        type="button"
+        value="Vote"
+        v-on:click="vote()"
+        />
     </div>
 </template>
 
@@ -53,11 +54,20 @@ export default {
 </script>
 
 <style scoped>
-
+.vote{
+  position: relative;
+  margin: auto;
+  left: 50%;
+  margin-left: -2rem;
+  width: 4rem;
+}
+h2{
+  word-break: break-word;
+}
 </style>
 
 <style>
 .answersheet-component{
-    display: block;
+  display: block;
 }
 </style>

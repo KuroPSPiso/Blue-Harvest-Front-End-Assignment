@@ -7,12 +7,15 @@ export default class AnswerClass{
         this.votes = 0
         this.setId = function(id) {
             this.id = id
+            return this;
         }
         this.setVotes = function(votes) {
             this.votes = votes
+            return this;
         }
         this.addVote = function(){
             this.votes++
+            return this;
         }
     }
 }

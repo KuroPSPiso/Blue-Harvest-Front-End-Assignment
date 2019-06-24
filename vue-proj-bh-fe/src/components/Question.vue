@@ -1,16 +1,35 @@
 <template>
-    <div class="question-component">
-        <div class="question-form">
+    <div ref="questionComponent" class="question-component">
+        <!--<div class="question-form">-->
             <div>
-                <input type="text" v-model="query" placeholder="Enter your question here"/>
+                <input 
+                    class="question"
+                    type="text"
+                    @input="updateQuery($event)"
+                    v-bind:value="query"
+                    placeholder="Enter your question here..."
+                    maxlength="80"
+                    />
             </div>
-            <div>
+            <div class="answers">
                 <div v-for="answer in answerList" v-bind:key="answer.index">
                     <input 
                         type="text" 
                         v-model="answer.value" 
+                        maxlength="80"
+                        v-bind:placeholder="
+                            'Enter your ' +
+                            (((answer.index) === 1) ? 
+                                '1st' :
+                                ((answer.index) === 2) ?
+                                    '2nd'
+                                    :((answer.index) === 3)? '3rd':
+                                        ((answer.index) + 'th')) + 
+                            ' here answer...'"
+                        v-bind:style="{ 'width': inputWidth + 'px' }"
                         />
                     <input 
+                        class="button button-round button-red"
                         type="button"
                         value="x"
                         v-on:click="removeAnswer(answer.index-1)"
@@ -28,20 +47,28 @@
                                     '2nd'
                                     :((getAnswerSize()+1) === 3)? '3rd':
                                         ((getAnswerSize()+1) + 'th')) + 
-                            ' answer here'"
+                            ' here answer...'"
+                        maxlength="80"
+                        v-bind:style="{ 'width': inputWidth + 'px' }"
                         />
                     <input 
+                        class="button button-blue"
                         type="button"
                         value="Add"
                         v-on:click="addAnswer()"
                         />
                 </div>
             </div>
-            <div>
+            <div class="reset">
                 {{getAnswerSize()}}/{{maxSize}} possible answers
-                <input type="button" value="Reset" v-on:click="reset()">
+                <input 
+                    class="button button-gray"
+                    type="button"
+                    value="Reset"
+                    v-on:click="reset()"
+                    />
             </div>
-        </div>
+        <!--</div>-->
     </div>
 </template>
 
@@ -54,16 +81,16 @@ export default {
   methods:{
     //generateKey: a unique key for the owner of a question to return to and edit later. 
     generateKey: function(){
-        
+        //create key
     },
     getAnswers: function(){
-
+        //get answers from dataset
     },
     getAnswerSize: function(){
         if(this.answerList === undefined)
-            return 0
+            return this.minSize
         else if(this.answerList === null)
-            return 0
+            return this.minSize
         else
             return this.answerList.length
     },
@@ -92,9 +119,29 @@ export default {
         }
     },
     reset: function(){
-        this.query = ""
-        this.answerList = []
-        this.$refs.addAnswerField.value = ""
+        if(this.editorCode === QuestionStore.data.editorCode)
+        {
+            this.query = ""
+        }
+        //TODO:remove when using live data
+
+        //if there are no answers or lack of answers or it is a new doc fill minimum required answers.
+        while(this.answerList.length < this.minSize){
+            this.addAnswer()
+        }
+    },
+    updateQuery(e){
+        this.query = e.target.value;
+        //TODO:remove when using live data
+        if(this.editorCode === QuestionStore.data.editorCode)
+        {
+            QuestionStore.data.editorCode = this.query;
+        }
+    }
+  },
+  computed:{
+    inputWidth: function(){
+        return this.clientWidth - (16*6.5); //rem spacing
     }
   },
   props:{
@@ -114,10 +161,18 @@ export default {
   data: function(){
       return {
           query: "",
-          answerList: []
+          answerList: [],
+          clientWidth: 0
       }
   },
+  created: function(){
+    let self = this
+    window.addEventListener("resize", function(){
+        self.clientWidth = self.$refs.questionComponent.clientWidth
+    })
+  },
   mounted: function(){
+    this.clientWidth = this.$refs.questionComponent.clientWidth
     //TODO: remove when data is fetched from the web
     if(this.editorCode === QuestionStore.data.editorCode)
     {
@@ -135,11 +190,21 @@ export default {
 </script>
 
 <style scoped>
-
+.question{
+    width: 100%;
+}
+.answers{
+    margin-bottom: 2rem;
+}
+.reset{
+    position: absolute;
+    bottom: 0;
+}
 </style>
 
 <style>
 .question-component{
     display: block;
+    position: relative;
 }
 </style>
