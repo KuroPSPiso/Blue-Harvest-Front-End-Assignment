@@ -4,21 +4,24 @@
     <div class="poll-grid">
       <Question class="cell cell-left" :editorCode="$route.params.editorCode"/>
       <AnswerSheet class="cell cell-center" :pollId="$route.params.pollId"/>
+      <Results class="cell cell-right" :pollId="$route.params.pollId"/>
     </div>
   </div>
 </template>
 
 <script>
-import DefaultComponent from './components/DefaultComponent.vue'
-import Question from './components/Question.vue'
-import AnswerSheet from './components/AnswerSheet.vue'
+import DefaultComponent from './components/DefaultComponent'
+import Question from './components/Question'
+import AnswerSheet from './components/AnswerSheet'
+import Results from './components/Results'
 
 export default {
   name: 'app',
   components: {
     DefaultComponent,
     Question,
-    AnswerSheet
+    AnswerSheet,
+    Results
   }, 
   data: function(){
     return{

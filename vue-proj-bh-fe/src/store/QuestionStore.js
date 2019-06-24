@@ -1,3 +1,4 @@
+//using a basic js implementation to more easily decouple from the main project, instead of relying on VueX
 import AnswerClass from "../classes/answer";
 
 const QuestionStore = {
