@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import Answer from '../classes/answer'
+import AnswerClass from '../classes/answer'
 
 export default {
   name: 'Question',
@@ -75,7 +75,7 @@ export default {
         else if(answerFieldVal === ""){
             //handle/pop error when empty answers are not allowed to be added
         }
-        let answerToPush = new Answer(this.answerList.length + 1, answerFieldVal) //obj[0] = 1, obj[1] = 2, etc.
+        let answerToPush = new AnswerClass(this.answerList.length + 1, answerFieldVal) //obj[0] = 1, obj[1] = 2, etc.
         this.answerList.push(answerToPush)
         this.$refs.addAnswerField.value = ""
     },
@@ -84,6 +84,10 @@ export default {
         for(let updateIndex = index; updateIndex < this.answerList.length; updateIndex++)
         {
             this.answerList[updateIndex].index = updateIndex + 1; //obj[0] = 1, obj[1] = 2, etc.
+        }
+        while(this.answerList.length < this.minSize)
+        {
+            this.addAnswer();
         }
     },
     reset: function(){
@@ -111,6 +115,12 @@ export default {
           query: "",
           answerList: []
       }
+  },
+  mounted: function(){
+    //fetch else
+    while(this.answerList.length < this.minSize){
+        this.addAnswer();
+    }
   }
 }
 </script>
@@ -121,6 +131,6 @@ export default {
 
 <style>
 .question-component{
-    display: grid;
+    display: block;
 }
 </style>

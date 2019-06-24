@@ -1,12 +1,12 @@
 <template>
-    <div class="default-component">
+    <div class="answersheet-component">
       default text
     </div>
 </template>
 
 <script>
 export default {
-  name: 'DefaultComponent',
+  name: 'AnswerSheet',
   props: {
   }
 }
@@ -17,7 +17,7 @@ export default {
 </style>
 
 <style>
-.default-component{
-    display: none;
+.answersheet-component{
+    display: block;
 }
 </style>
