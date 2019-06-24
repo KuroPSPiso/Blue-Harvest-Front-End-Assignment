@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({
   routes: [
-    { path: '/:id/:editorCode', component: App }
+    { path: '/:pollId/:editorCode', component: App }
   ],
   mode: 'history'
 })

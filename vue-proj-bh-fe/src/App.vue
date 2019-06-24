@@ -3,7 +3,7 @@
     <DefaultComponent />
     <div class="poll-grid">
       <Question class="cell cell-left" :editorCode="$route.params.editorCode"/>
-      <AnswerSheet class="cell cell-center"/>
+      <AnswerSheet class="cell cell-center" :pollId="$route.params.pollId"/>
     </div>
   </div>
 </template>
@@ -26,8 +26,8 @@ export default {
       editorCode: ""
     }
   },
-  mounted(){
-      this.pollId = this.$route.params.id
+  created(){
+      this.pollId = this.$route.params.pollId
       this.editorCode = this.$route.params.editorCode
   }
 }
